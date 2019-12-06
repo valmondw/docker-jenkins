@@ -1,0 +1,38 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="duck-duck-suite" parallel="tests">
+
+    <!--<parameter name="HUB_HOST" value="grid" /> -->
+
+    <test name ="duck-search-1">
+        <parameter name="keyword" value="java" />
+        <classes>
+            <class name="com.searchmodule.tests.SearchTest" />
+        </classes>
+    </test>
+    <test name ="duck-search-2">
+        <parameter name="keyword" value="qa" />
+        <classes>
+            <class name="com.searchmodule.tests.SearchTest" />
+        </classes>
+    </test>
+    <test name ="duck-search-3">
+        <parameter name="keyword" value="webdriver" />
+        <classes>
+            <class name="com.searchmodule.tests.SearchTest" />
+        </classes>
+    </test>
+    <test name ="duck-search-4">
+        <parameter name="keyword" value="docker" />
+        <classes>
+            <class name="com.searchmodule.tests.SearchTest" />
+        </classes>
+    </test>
+    <test name ="duck-search-5">
+        <parameter name="keyword" value="valmond" />
+        <classes>
+            <class name="com.searchmodule.tests.SearchTest" />
+        </classes>
+    </test>
+
+
+</suite>
