@@ -11,7 +11,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 //sh for MAC
-                bat "docker build -t='valmondw/selenium-docker' ."
+                bat "docker build -t=valmondw/selenium-docker ."
             }
         }
         stage('Push Image') {
