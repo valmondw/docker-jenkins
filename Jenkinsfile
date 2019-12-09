@@ -23,5 +23,21 @@ pipeline {
 			    }
             }
         }
+		stage('Start Grid') {
+            steps {
+                //sh for MAC
+                bat "docker-compose up -d --scale chrome=2 --scale firefox=2 --no-color"
+            }
+        }
+		stage('Run Test') {
+            steps {
+                bat "docker-compose up bookflight-module_1 duckduck-module_1"
+            }
+        }
+        stage('Stop Grid') {
+            steps {
+                bat "docker-compose down"
+            }
+        }
     }
 }
