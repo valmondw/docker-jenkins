@@ -1,0 +1,64 @@
+version: "3"
+services:
+  hub:
+   image: selenium/hub:3.14
+   ports:
+     - "4444:4444"
+  chrome:
+   image: selenium/node-chrome:3.14
+   depends_on:
+     - hub
+   environment:
+     - HUB_HOST=hub   
+  firefox:
+   image: selenium/node-firefox:3.14
+   shm_size: '1gb' 
+   depends_on:
+     - hub
+   environment:
+     - HUB_HOST=hub     
+  bookflight-module_1:
+   image: valmondw/selenium-docker
+   depends_on:
+     - chrome
+     - firefox
+   environment:
+     - BROWSER=chrome
+     - HUB_HOST=hub
+     - MODULE=bookFlight.xml
+   volumes:
+     - /host_mnt/c/DockerStuff/Newtours/bookflightChrome-result/:/usr/share/udemy/test-output
+  bookflight-module_2:
+   image: valmondw/selenium-docker
+   depends_on:
+     - chrome
+     - firefox
+   environment:
+     - BROWSER=firefox
+     - HUB_HOST=hub
+     - MODULE=bookFlight.xml
+   volumes:
+     - /host_mnt/c/DockerStuff/Newtours/bookflightFirefox-result/:/usr/share/udemy/test-output     
+     
+  duckduck-module_1:
+   image: valmondw/selenium-docker
+   depends_on:
+     - chrome
+     - firefox
+   environment:
+     - BROWSER=chrome
+     - HUB_HOST=hub
+     - MODULE=duckTestng.xml     
+   volumes:
+     - ./duckduckChrome-result/:/usr/share/udemy/test-output  
+  duckduck-module_2:
+   image: valmondw/selenium-docker
+   depends_on:
+     - chrome
+     - firefox
+   environment:
+     - BROWSER=firefox
+     - HUB_HOST=hub
+     - MODULE=duckTestng.xml     
+   volumes:
+     - ./duckduckFirefox-result/:/usr/share/udemy/test-output   
