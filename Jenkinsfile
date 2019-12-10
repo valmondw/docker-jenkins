@@ -2,25 +2,25 @@ pipeline {
     // master executor should be set to 0
     agent any
     stages {
-		stage('Pull Image') {
+        stage('Build Jar') {
             steps {
                 //sh for MAC
-                bat "docker pull valmondw/selenium-docker"
+                bat "mvn clean package -DskipTests"
             }
         }
-		stage('Start Grid') {
+        stage('Build Image') {
             steps {
-                bat "docker-compose up -d hub chrome firefox"
+                //sh for MAC
+                bat "docker build -t=valmondw/selenium-docker ."
             }
         }
-		stage('Run Test') {
+        stage('Push Image') {
             steps {
-                bat "docker-compose up bookflight-module_1 duckduck-module_1"
-            }
-        }
-        stage('Stop Grid') {
-            steps {
-                bat "docker-compose down"
+			    withCredentials([usernamePassword(credentialsId: 'dockerhubid', passwordVariable: 'pass', usernameVariable: 'user')]) {
+                //sh for MAC
+			        bat "docker login --username=${user} --password=${pass}"
+			        bat "docker push valmondw/selenium-docker:latest"
+			    }
             }
         }
     }
