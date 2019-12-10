@@ -26,7 +26,7 @@ pipeline {
 		stage('Start Grid') {
             steps {
                 //sh for MAC
-                bat "docker-compose up -d --scale chrome=2 --scale firefox=2 --no-color"
+                bat "docker-compose up -d hub --scale chrome=2 --scale firefox=2"
             }
         }
 		stage('Run Test') {
