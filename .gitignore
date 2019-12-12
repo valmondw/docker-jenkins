@@ -1,4 +1,5 @@
 Newtours.iml
+selenium-docker.iml
 .idea
 /bookflightChrome-result/*
 /bookflightFirefox-result/*
