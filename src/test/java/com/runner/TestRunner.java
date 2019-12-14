@@ -9,8 +9,8 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
         tags = {"~@ignore"},
         plugin = {
                 "pretty",
-                "html:target/cucumber-reports/cucumber-pretty",
-                "json:target/cucumber-reports/json-reports/CucumberTestReports.json",
+                "html:target/cucumber-reports/duckduck-html-report",
+                "json:target/cucumber-reports/json-reports/cucumber.json",
                 "rerun:target/cucumber-reports/rerun-reports/rerun.txt"})
 public class TestRunner  extends AbstractTestNGCucumberTests{
 }

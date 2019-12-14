@@ -54,6 +54,7 @@ public class SearchSteps {
 
     @Given("^I am goto the duck-duck go website$")
     public void goto_to_duckduck_website(){
+        searchPage = new SearchPage(driver);
         searchPage.gotoDuckHomePage();
     }
 
@@ -74,8 +75,4 @@ public class SearchSteps {
     }
 
 
-
-
-
-
-}//
+}// class
