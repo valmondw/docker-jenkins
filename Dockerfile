@@ -19,14 +19,9 @@ ADD target/selenium-docker.jar selenium-docker.jar
 ADD target/selenium-docker-tests.jar selenium-docker-tests.jar
 ADD target/libs libs
 
-# Add testng suite files
-ADD bookFlight.xml bookFlight.xml
-ADD duckTestng.xml duckTestng.xml
 # Add any other dependency files as well e.g. json/xml/xls  Add healthcheck
-ADD healthcheck.sh healthcheck.sh
+ADD healthcheck.sh   healthcheck.sh
 
-# Parameters BROWSER, HUB_HOST, SUITE FILE
-# ENTRYPOINT java -cp selenium-docker.jar:selenium-docker-tests.jar:libs/* -DBROWSER=$BROWSER -DHUB=$HUB_HOST org.testng.TestNG $MODULE
 ENTRYPOINT sh healthcheck.sh
 
 
