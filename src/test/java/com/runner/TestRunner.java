@@ -5,6 +5,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
 
 @CucumberOptions(
         features = ".",
+       // features = "src/test/resources/features",
         glue={"com.stepdefinitions"},
         tags = {"~@ignore"},
         plugin = {

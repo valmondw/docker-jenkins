@@ -17,4 +17,14 @@ services:
      - hub
    environment:
      - HUB_HOST=hub     
- 
+  bdd:
+   image: valmondw/newtoursbdd
+   depends_on:
+     - chrome
+   environment:
+     - HUB_HOST=hub
+     - BROWSER=chrome
+     - CUCUMBER_OPTIONS=classpath:features
+   volumes:
+     - ./output:/usr/share/udemy/target/cucumber-reports    
+      
